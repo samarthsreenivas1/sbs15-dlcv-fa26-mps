@@ -1,0 +1,33 @@
+# Hyperparameter settings, one block per experiment.
+# `--exp_name NAME` (or EXP_NAME=NAME with sbatch) selects the block called NAME
+# below, so every new experiment needs its own block: copy an existing block,
+# rename it and edit the values. Running with a name that has no block raises a
+# KeyError.
+vit_linear:
+    lr: 0.001
+    wd: 0.01
+    epochs: 100
+    optimizer: 'sgd'
+    scheduler: 'multi_step'
+    momentum: 0.99
+    net_class: ViTLinear
+    batch_size: 32
+
+pixmo_demo:
+    lr: 0.0003            # write 3.0e-4 or 0.0003, not 3e-4 (YAML reads 3e-4 as a string)
+    epochs: 20
+    optimizer: 'adam'     # 'adam' or 'sgd'
+    wd: 0.0               # weight decay (used by both optimizers)
+    # momentum: 0.9       # sgd only
+    # scheduler: 'cosine' # 'multi_step' (drops lr 10x at 60% and 80% of the epochs), 'cosine', or omit for none
+    net_class: PixMoModel
+    batch_size: 16
+    num_classes: 20
+    # Keyword arguments for the model constructor. Copy this block under a new
+    # name and change these for ablations; every key here is passed through.
+    model:
+        patch_tokens: 1
+        num_layers: 2
+        num_heads: 2
+        feature_dim: 512   # = ResNet34 token width; other values need a projection layer in model.py
+        dropout: 0.1

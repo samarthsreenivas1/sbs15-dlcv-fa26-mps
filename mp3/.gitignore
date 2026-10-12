@@ -1,0 +1,17 @@
+debug.ipynb
+*._*
+*.vscode/
+*pred_txt*
+logs/
+checkpoints/
+wandb/
+data/
+pixmo_data*
+results/
+.DS_Store
+*__pycache__*/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz

@@ -1,0 +1,10 @@
+numpy
+gradescope-utils
+matplotlib
+torch
+tensorboardX
+tensorboard
+torchvision>=0.17
+pyyaml
+tqdm
+absl-py
